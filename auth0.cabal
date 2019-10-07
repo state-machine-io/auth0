@@ -51,7 +51,7 @@ library
                      , Auth0.Management.Tenants
                      , Auth0.Management.Tickets
   build-depends:       aeson
-                     , base
+                     , base >= 4.7 && < 5
                      , bytestring
                      , containers
                      , http-client
