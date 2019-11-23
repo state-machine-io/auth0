@@ -4,10 +4,10 @@ module Auth0.Types where
 
 --------------------------------------------------------------------------------
 import           Data.Aeson
-import           Data.ByteString                ( ByteString )
-import           Servant.API             hiding ( Verb )
-import           Data.Text
+import           Data.ByteString (ByteString)
 import           Data.Tagged
+import           Data.Text
+import           Servant.API     hiding (Verb)
 --------------------------------------------------------------------------------
 
 data TenantTag
@@ -22,8 +22,8 @@ type AccessToken = Tagged AccessTokenTag Text
 mkAccessToken :: Text -> AccessToken
 mkAccessToken = Tagged
 
--- instance ToHttpApiData AccessToken where
---   toUrlPiece = untag
+instance {-# OVERLAPPING #-} ToHttpApiData AccessToken where
+  toUrlPiece = untag
 
 data ClientIdTag
 type ClientId = Tagged ClientIdTag Text
@@ -31,8 +31,8 @@ type ClientId = Tagged ClientIdTag Text
 mkClientId :: Text -> ClientId
 mkClientId = Tagged
 
--- instance ToHttpApiData ClientId where
---   toUrlPiece = untag
+instance {-# OVERLAPPING #-} ToHttpApiData ClientId where
+  toUrlPiece = untag
 
 data ClientSecretTag
 type ClientSecret = Tagged ClientSecretTag Text
